@@ -6,10 +6,22 @@
     <description>Recent content in Blog on Apache Camel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://camel.apache.org/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Camel K 1.2.0 Released</title>
+      <link>https://camel.apache.org/blog/2020/10/camel-k-release-1.2.0/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://camel.apache.org/blog/2020/10/camel-k-release-1.2.0/</guid>
+      <description>Apache Camel K 1.2.0 has been released!
+This version introduces some important features that will play an increasingly bigger role in future releases of Camel K.
+Quarkus as default runtime Camel K 1.2.0 uses camel-quarkus 1.1.0 (Quarkus 1.8.0.Final) as runtime, but Quarkus is no longer an optional runtime for Camel K: Quarkus is now the default runtime.
+This means that users no longer need to enable Quarkus explicitly when running their integrations (using kamel run -t quarkus.</description>
+    </item>
     
     <item>
       <title>Camel at ApacheCon @Home starts tomorrow!</title>
