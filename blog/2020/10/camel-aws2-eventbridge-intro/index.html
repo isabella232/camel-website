@@ -1,0 +1,247 @@
+<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../../../apple-touch-icon-57x57.png"> <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../apple-touch-icon-114x114.png"> <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../apple-touch-icon-72x72.png"> <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../apple-touch-icon-144x144.png"> <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../../../../apple-touch-icon-60x60.png"> <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../../../apple-touch-icon-120x120.png"> <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../../../../apple-touch-icon-76x76.png"> <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../../apple-touch-icon-152x152.png"> <link rel="icon" type="image/png" href="../../../../favicon-196x196.png" sizes="196x196"> <link rel="icon" type="image/png" href="../../../../favicon-96x96.png" sizes="96x96"> <link rel="icon" type="image/png" href="../../../../favicon-32x32.png" sizes="32x32"> <link rel="icon" type="image/png" href="../../../../favicon-16x16.png" sizes="16x16"> <link rel="icon" type="image/png" href="../../../../favicon-128.png" sizes="128x128"> <meta name="application-name" content="Apache Camel"> <link rel="manifest" href="../../../../site.webmanifest"> <title>Introducing Camel-AWS2-Eventbridge component - Apache Camel</title> <link rel="canonical" href="../../../../blog/2020/10/camel-aws2-eventbridge-intro/"> <link rel="stylesheet" href="../../../../_/css/site-81265ad299.css"> </head> <body class="article"> <header class="header"> <nav class="navbar"> <div class="navbar-brand"> <a class="nav-logo" href="../../../../" title="Apache Camel"></a> <div id="topbar-nav" class="navbar-menu"> <div class="navbar-end"> <a class="navbar-item-section navbar-item navbar-topics" href="../../../../blog/"> <img alt="Blog" src="../../../../_/img/blog.svg"> Blog </a> <a class="navbar-item-section navbar-item navbar-topics" href="../../../../docs/"> <img alt="Documentation" src="../../../../_/img/documentation.svg"> Documentation </a> <a class="navbar-item-section navbar-item navbar-topics" href="../../../../community/"> <img alt="Community" src="../../../../_/img/community.svg"> Community </a> <a class="navbar-item-section navbar-item navbar-topics" href="../../../../download/"> <img alt="Download" src="../../../../_/img/download.svg"> Download </a> </div> </div> <div class="navbar-fill"></div> <div class="break-row"></div> <div class="navbar-search results-hidden"> <input id="search" class="search" placeholder="Search" autocomplete="off"> <img src="/_/img/cancel.svg" alt="Clear" id="search-cancel"> <div id="search_results"></div> </div> <div class="navbar-tools"> <a rel="noopener noreferrer nofollow" href="https://github.com/apache/camel/" title="Collaborate on GitHub"><svg focusable="false" class="brand-icon"><use href="../../../../_/img/brand-logos.svg#github"/></svg></a> <a rel="noopener noreferrer nofollow" href="https://camel.zulipchat.com" title="Chat on Zulip"><svg focusable="false" class="brand-icon"><use href="../../../../_/img/brand-logos.svg#zulip"/></svg></a> <a rel="noopener noreferrer nofollow" href="https://twitter.com/ApacheCamel" title="Follow Apache Camel on Twitter"><svg focusable="false" class="brand-icon"><use href="../../../../_/img/brand-logos.svg#twitter"/></svg></a> </div> <button class="navbar-burger" data-target="topbar-nav" type="button"> <span></span> <span></span> <span></span> </button> </div> </nav> </header> <div class="body"> <main role="main blog"> <article class="blog doc"> <header> <a class="category" href="../../../../categories/Camel/">CAMEL</a> <h1>Introducing Camel-AWS2-Eventbridge component</h1> </header> <div class="post"> <aside> <div class="summary">Camel-AWS2 Eventbridge introduction</div> Posted on <time itemprop="published" datetime="2020-10-12" title="Monday, October 12, 2020">October 12, 2020</time>, by <figure> <img src="https://avatars0.githubusercontent.com/u/5106647?v=4" alt="Andrea Cosentino"> <figcaption rel="author">Andrea Cosentino</figcaption> </figure> <p> <a class="arrow prev" href="../../../../blog/2020/09/ApacheCon-at-Home-starts/" title="Previous post: Camel at ApacheCon @Home starts tomorrow!">&#10094;</a> <a class="arrow next" href="../../../../blog/2020/10/camel-k-release-1.2.0/" title="Next post: Camel K 1.2.0 Released">&#10095;</a> </p> </aside> <div class="post-content"> <img class="featured" alt="Blog post featured image" src="../../../../blog/2020/10/camel-aws2-eventbridge-intro/featured_huf2bdf16696bdc15f060e09e9ed316c94_3975989_800x0_resize_q95_gaussian_2.png" width="800" height="531"> <p>In Camel 3.6.0 we will introduce the camel-aws2-eventbridge among others new cool components. The aim of this blog post is showing what you can do with the Eventbridge AWS Service and the related camel component.</p> <h3 id="what-is-aws-eventbridge">What is AWS Eventbridge?</h3> <p>The definition from the <a href="https://aws.amazon.com/eventbridge/?nc1=h_ls" rel="nofollow noreferrer">AWS official website</a> is the following:</p> <p><em>Amazon EventBridge is a serverless event bus that makes it easy to connect applications together using data from your own applications, integrated Software-as-a-Service (SaaS) applications, and AWS services. EventBridge delivers a stream of real-time data from event sources, such as Zendesk, Datadog, or Pagerduty, and routes that data to targets like AWS Lambda. You can set up routing rules to determine where to send your data to build application architectures that react in real time to all of your data sources.</em></p> <p>So basically you can listen for events on your bus, which can be the default event bus (the AWS one) or a custom event bus. The events coming from the bus can be send to AWS services, like an SQS queue, SNS topic or an S3 bucket. Obviously events can trigger actions.</p> <p>For each event bus, you can set rules: each rule specify a target action to take when EventBridge receives an event that matches the rule. When an event matches the rule, EventBridge sends the event to the specified target and triggers the action defined in the rule.</p> <p>All of this can be done from AWS Console UI or from code, indifferently.</p> <h3 id="what-is-the-component-structure">What is the component structure?</h3> <p>The AWS2-Eventbridge component act as producer-only component. At the moment of writing the operations you can do are the following:</p> <ul> <li>putRule</li> <li>putTargets</li> <li>removeTargets</li> <li>deleteRule</li> <li>enableRule</li> <li>disableRule</li> <li>listRules</li> <li>describeRule</li> <li>listTargetsByRule</li> <li>listRuleNamesByTarget</li> </ul> <p>The interesting operations are for sure the putRule and putTargets rule.</p> <p>I set up a little example in the <a href="https://github.com/apache/camel-examples/tree/master/examples/camel-example-main-endpointdsl-aws2" rel="nofollow noreferrer">camel-examples repository</a>, showing what can be done, but we&rsquo;ll talk about this later.</p> <h3 id="eventbridge-rules-events-pattern-and-targets">Eventbridge Rules, Events Pattern and Targets</h3> <p>The important parts of an Eventbridge rule are the event pattern and the targets.</p> <p>An event in AWS looks in this way:</p> <pre><code class="language-json">{
+  &quot;version&quot;: &quot;0&quot;,
+  &quot;id&quot;: &quot;6a7e8feb-b491-4cf7-a9f1-bf3703467718&quot;,
+  &quot;detail-type&quot;: &quot;EC2 Instance State-change Notification&quot;,
+  &quot;source&quot;: &quot;aws.ec2&quot;,
+  &quot;account&quot;: &quot;111122223333&quot;,
+  &quot;time&quot;: &quot;2017-12-22T18:43:48Z&quot;,
+  &quot;region&quot;: &quot;us-west-1&quot;,
+  &quot;resources&quot;: [
+    &quot;arn:aws:ec2:us-west-1:123456789012:instance/ i-1234567890abcdef0&quot;
+],
+&quot;detail&quot;: {
+  &quot;instance-id&quot;: &quot; i-1234567890abcdef0&quot;,
+  &quot;state&quot;: &quot;terminated&quot;
+  }
+}
+</code></pre> <p>This is, for example, an event notifying the state-change of an EC2 instance.</p> <p>An event pattern is similar to an event. They have the same structure. Event patterns look much like the events they are filtering.</p> <p>So you can write your own event pattern like this one</p> <pre><code class="language-json">{
+  &quot;source&quot;: [ &quot;aws.ec2&quot; ],
+  &quot;detail-type&quot;: [ &quot;EC2 Instance State-change Notification&quot; ],
+  &quot;detail&quot;: {
+    &quot;state&quot;: [ &quot;terminated&quot; ]
+  }
+}
+</code></pre> <p>In this case we want to get a notification of all the EC2 instances termination in our account.</p> <p>But you can also would like to know when an EC2 is running again for example.</p> <pre><code class="language-json">{
+  &quot;source&quot;: [ &quot;aws.ec2&quot; ],
+  &quot;detail-type&quot;: [ &quot;EC2 Instance State-change Notification&quot; ],
+  &quot;detail&quot;: {
+    &quot;state&quot;: [ &quot;terminated&quot;, &quot;running&quot; ]
+  }
+}
+</code></pre> <p>Now that we know what kind of events we want, we need to set up targets to be able to consume them.</p> <p>The request syntax for adding a target to a rule is the following</p> <pre><code class="language-json">{
+   &quot;EventBusName&quot;: &quot;string&quot;,
+   &quot;Rule&quot;: &quot;string&quot;,
+   &quot;Targets&quot;: [
+      {
+         &quot;Arn&quot;: &quot;string&quot;,
+         &quot;BatchParameters&quot;: {
+            &quot;ArrayProperties&quot;: {
+               &quot;Size&quot;: number
+            },
+            &quot;JobDefinition&quot;: &quot;string&quot;,
+            &quot;JobName&quot;: &quot;string&quot;,
+            &quot;RetryStrategy&quot;: {
+               &quot;Attempts&quot;: number
+            }
+         },
+         &quot;DeadLetterConfig&quot;: {
+            &quot;Arn&quot;: &quot;string&quot;
+         },
+         &quot;EcsParameters&quot;: {
+            &quot;Group&quot;: &quot;string&quot;,
+            &quot;LaunchType&quot;: &quot;string&quot;,
+            &quot;NetworkConfiguration&quot;: {
+               &quot;awsvpcConfiguration&quot;: {
+                  &quot;AssignPublicIp&quot;: &quot;string&quot;,
+                  &quot;SecurityGroups&quot;: [ &quot;string&quot; ],
+                  &quot;Subnets&quot;: [ &quot;string&quot; ]
+               }
+            },
+            &quot;PlatformVersion&quot;: &quot;string&quot;,
+            &quot;TaskCount&quot;: number,
+            &quot;TaskDefinitionArn&quot;: &quot;string&quot;
+         },
+         &quot;HttpParameters&quot;: {
+            &quot;HeaderParameters&quot;: {
+               &quot;string&quot; : &quot;string&quot;
+            },
+            &quot;PathParameterValues&quot;: [ &quot;string&quot; ],
+            &quot;QueryStringParameters&quot;: {
+               &quot;string&quot; : &quot;string&quot;
+            }
+         },
+         &quot;Id&quot;: &quot;string&quot;,
+         &quot;Input&quot;: &quot;string&quot;,
+         &quot;InputPath&quot;: &quot;string&quot;,
+         &quot;InputTransformer&quot;: {
+            &quot;InputPathsMap&quot;: {
+               &quot;string&quot; : &quot;string&quot;
+            },
+            &quot;InputTemplate&quot;: &quot;string&quot;
+         },
+         &quot;KinesisParameters&quot;: {
+            &quot;PartitionKeyPath&quot;: &quot;string&quot;
+         },
+         &quot;RedshiftDataParameters&quot;: {
+            &quot;Database&quot;: &quot;string&quot;,
+            &quot;DbUser&quot;: &quot;string&quot;,
+            &quot;SecretManagerArn&quot;: &quot;string&quot;,
+            &quot;Sql&quot;: &quot;string&quot;,
+            &quot;StatementName&quot;: &quot;string&quot;,
+            &quot;WithEvent&quot;: boolean
+         },
+         &quot;RetryPolicy&quot;: {
+            &quot;MaximumEventAgeInSeconds&quot;: number,
+            &quot;MaximumRetryAttempts&quot;: number
+         },
+         &quot;RoleArn&quot;: &quot;string&quot;,
+         &quot;RunCommandParameters&quot;: {
+            &quot;RunCommandTargets&quot;: [
+               {
+                  &quot;Key&quot;: &quot;string&quot;,
+                  &quot;Values&quot;: [ &quot;string&quot; ]
+               }
+            ]
+         },
+         &quot;SqsParameters&quot;: {
+            &quot;MessageGroupId&quot;: &quot;string&quot;
+         }
+      }
+   ]
+}
+</code></pre> <p>As you may see there are many parameters. We just need to set the rule name and add our target.</p> <h3 id="creating-a-rule-through-camel">Creating a rule through camel</h3> <p>As I said there is a little example in the camel-examples repository based on camel-aws2-eventbridge, camel-aws2-s3 and camel-aws2-sqs.</p> <p>Creating a rule in Camel is as easy as writing this little snippet.</p> <pre><code class="language-java">public class MyRouteBuilder extends EndpointRouteBuilder {
+
+    @Override
+    public void configure() throws Exception {
+
+        from(timer(&quot;fire&quot;).repeatCount(&quot;1&quot;))
+        .setHeader(EventbridgeConstants.RULE_NAME, constant(&quot;s3-events-rule&quot;))
+        .to(aws2Eventbridge(&quot;default&quot;)
+        		.operation(EventbridgeOperations.putRule)
+        		.eventPatternFile(&quot;file:src/main/resources/eventpattern.json&quot;))
+        .process(new Processor() {
+            @Override
+            public void process(Exchange exchange) throws Exception {
+                exchange.getIn().setHeader(EventbridgeConstants.RULE_NAME, &quot;s3-events-rule&quot;);
+                Target target = Target.builder().id(&quot;sqs-queue&quot;).arn(&quot;arn:aws:sqs:eu-west-1:780410022477:camel-connector-test&quot;)
+                        .build();
+                List&lt;Target&gt; targets = new ArrayList&lt;Target&gt;();
+                targets.add(target);
+                exchange.getIn().setHeader(EventbridgeConstants.TARGETS, targets);
+            }
+        })
+        .to(aws2Eventbridge(&quot;default&quot;)
+        		.operation(EventbridgeOperations.putTargets))
+        .log(&quot;All set, enjoy!&quot;);
+    }
+}
+</code></pre> <p>In this route we are creating a single rule, called s3-events-rule, by using an eventpattern.json file. The target of this rule is the <code>arn:aws:sqs:eu-west-1:780410022477:camel-connector-test</code> and the target Id is <code>sqs-queue</code>. This means we are pointing an SQS queue called camel-connector-test. All of this will be done on the default event bus, which is the AWS event bus.</p> <p>What we have in the eventpattern.json file:</p> <pre><code class="language-json">{
+  &quot;source&quot;: [
+    &quot;aws.s3&quot;
+  ],
+  &quot;detail&quot;: {
+    &quot;eventSource&quot;: [
+      &quot;s3.amazonaws.com&quot;
+    ],
+    &quot;eventName&quot;: [
+      &quot;DeleteBucket&quot;,
+      &quot;DeleteBucketCors&quot;,
+      &quot;DeleteBucketLifecycle&quot;,
+      &quot;DeleteBucketPolicy&quot;,
+      &quot;DeleteBucketReplication&quot;,
+      &quot;DeleteBucketTagging&quot;,
+      &quot;DeleteBucketWebsite&quot;,
+      &quot;CreateBucket&quot;,
+      &quot;PutBucketAcl&quot;,
+      &quot;PutBucketCors&quot;,
+      &quot;PutBucketLifecycle&quot;,
+      &quot;PutBucketPolicy&quot;,
+      &quot;PutBucketLogging&quot;,
+      &quot;PutBucketNotification&quot;,
+      &quot;PutBucketReplication&quot;,
+      &quot;PutBucketTagging&quot;,
+      &quot;PutBucketRequestPayment&quot;,
+      &quot;PutBucketVersioning&quot;,
+      &quot;PutBucketWebsite&quot;,
+      &quot;PutBucketEncryption&quot;,
+      &quot;DeleteBucketEncryption&quot;,
+      &quot;DeleteBucketPublicAccessBlock&quot;,
+      &quot;PutBucketPublicAccessBlock&quot;
+    ]
+  }
+}
+</code></pre> <p>We want to be informed on the list of events. The eventpattern json can be built by hand, but also through the AWS console UI, through a series of dropdown menus during the rule creation.</p> <p>One important note on the usage of AWS Eventbridge is the following: to create a rule that triggers on an action by an AWS service that does not emit events, you can base the rule on API calls made by that service. The API calls are recorded by AWS CloudTrail, so you’ll need to have CloudTrail enabled. In this way you&rsquo;ll be notified anyway.</p> <p>Through an AWS SQS consumer, we should be able to consume the events coming in from the eventbridge.</p> <pre><code class="language-java">public class MyRouteBuilder extends EndpointRouteBuilder {
+
+    @Override
+    public void configure() throws Exception {
+
+        from(aws2Sqs(&quot;{{sqs-queue-name}}&quot;).deleteAfterRead(true))
+        .log(&quot;${body}&quot;);
+    }
+}
+</code></pre> <p>The sqs-queue-name is camel-connector-test in this example. The property is defined in an application.properties file. All is well explained in the example anyway.</p> <p>We can now try to create events to consume. Through the following route:</p> <pre><code class="language-java">public class MyRouteBuilder extends EndpointRouteBuilder {
+
+    @Override
+    public void configure() throws Exception {
+
+    	from(timer(&quot;fire&quot;).repeatCount(&quot;1&quot;))
+    	.setBody(constant(&quot;Camel rocks&quot;))
+    	.to(aws2S3(&quot;{{bucketName}}&quot;).keyName(&quot;firstfile&quot;));
+    }
+}
+</code></pre> <p>In this case the bucketName will be the name of a not already created bucket. In my example I was using camel-bucket-12567. The aws2-s3 has the autocreateBucket option set to true by default, so it will be created during the route execution and the event will be created.</p> <p>In the terminal of the SQS consumer you should see a CreateBucket event logged.</p> <pre><code>14:08:16.585 [Camel (AWS2-SQS-Consumer) thread #0 - aws2-sqs://camel-connector-test] INFO  route1 - {&quot;version&quot;:&quot;0&quot;,&quot;id&quot;:&quot;a79c33f3-fd64-481c-7964-8929b26ac2ae&quot;,&quot;detail-type&quot;:&quot;AWS API Call via CloudTrail&quot;,&quot;source&quot;:&quot;aws.s3&quot;,&quot;account&quot;:&quot;xxxx&quot;,&quot;time&quot;:&quot;2020-10-16T12:08:12Z&quot;,&quot;region&quot;:&quot;eu-west-1&quot;,&quot;resources&quot;:[],&quot;detail&quot;:{&quot;eventVersion&quot;:&quot;1.05&quot;,&quot;userIdentity&quot;:{&quot;type&quot;:&quot;xxx&quot;,&quot;principalId&quot;:&quot;xxx&quot;,&quot;arn&quot;:&quot;arn:xxx&quot;,&quot;accountId&quot;:&quot;xxx&quot;,&quot;accessKeyId&quot;:&quot;xxx&quot;},&quot;eventTime&quot;:&quot;2020-10-16T12:08:12Z&quot;,&quot;eventSource&quot;:&quot;s3.amazonaws.com&quot;,&quot;eventName&quot;:&quot;CreateBucket&quot;,&quot;awsRegion&quot;:&quot;eu-west-1&quot;,&quot;sourceIPAddress&quot;:&quot;xxx&quot;,&quot;userAgent&quot;:&quot;[aws-sdk-java/2.15.8 Linux/3.10.0-1127.19.1.el7.x86_64 OpenJDK_64-Bit_Server_VM/25.252-b09 Java/1.8.0_252 vendor/AdoptOpenJDK io/sync http/Apache]&quot;,&quot;requestParameters&quot;:{&quot;CreateBucketConfiguration&quot;:{&quot;LocationConstraint&quot;:&quot;eu-west-1&quot;,&quot;xmlns&quot;:&quot;http://s3.amazonaws.com/doc/2006-03-01/&quot;},&quot;bucketName&quot;:&quot;camel-bucket-12567&quot;,&quot;Host&quot;:&quot;camel-bucket-12567.s3.eu-west-1.amazonaws.com&quot;}
+.
+.
+.
+</code></pre> <p>You can also try to delete the bucket from the AWS Console too and you should get a message like this one:</p> <pre><code>13:42:55.560 [Camel (AWS2-SQS-Consumer) thread #0 - aws2-sqs://camel-connector-test] INFO  route1 - {&quot;version&quot;:&quot;0&quot;,&quot;id&quot;:&quot;f8f289ab-bb8f-65c5-0bf6-a4929333bc4c&quot;,&quot;detail-type&quot;:&quot;AWS API Call via CloudTrail&quot;,&quot;source&quot;:&quot;aws.s3&quot;,&quot;account&quot;:&quot;xxx&quot;,&quot;time&quot;:&quot;2020-10-16T11:42:33Z&quot;,&quot;region&quot;:&quot;eu-west-1&quot;,&quot;resources&quot;:[],&quot;detail&quot;:{&quot;eventVersion&quot;:&quot;1.05&quot;,&quot;userIdentity&quot;:{&quot;type&quot;:&quot;xxx&quot;,&quot;principalId&quot;:&quot;xxx&quot;,&quot;arn&quot;:&quot;arn:xxx&quot;,&quot;accountId&quot;:&quot;xxx&quot;,&quot;accessKeyId&quot;:&quot;xxxx&quot;,&quot;sessionContext&quot;:{&quot;sessionIssuer&quot;:{},&quot;webIdFederationData&quot;:{}}},&quot;eventTime&quot;:&quot;2020-10-16T11:42:33Z&quot;,&quot;eventSource&quot;:&quot;s3.amazonaws.com&quot;,&quot;eventName&quot;:&quot;DeleteBucket&quot;,&quot;awsRegion&quot;:&quot;eu-west-1&quot;,&quot;sourceIPAddress&quot;:&quot;xxxx&quot;,&quot;userAgent&quot;:&quot;[S3Console/0.4, aws-internal/3 aws-sdk-java/1.11.783 Linux/4.9.217-0.3.ac.206.84.332.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.252-b09 java/1.8.0_252 vendor/Oracle_Corporation]&quot;,&quot;requestParameters&quot;:{&quot;bucketName&quot;:&quot;camel-bucket-12567&quot;,&quot;Host&quot;:&quot;s3-eu-west-1.amazonaws.com&quot;},&quot;responseElements&quot;:null ...
+.
+.
+.
+</code></pre> <p>As you may see the userAgent is different in this case.</p> <h3 id="conclusion">Conclusion</h3> <p>This is just a really basic example, but you may have triggered an action on receiving the events, like for example adding a bucketPolicy to the newly created bucket. AWS Eventbridge is for sure an interesting service. The camel component can be improved by better supporting not only the default event bus of AWS Services but also external buses. We are working on that and on expanding the AWS services supported at the same time: you&rsquo;re welcome to help!</p> </div> </div> </article> </main> </div> <div class="footer-tools"> <a title="Improve this document, receive free virtual hugs &hearts;" href="https://github.com/apache/camel-website/edit/master/content/blog/2020/10/camel-aws2-eventbridge-intro/index.md">Edit this Page</a> <a href="#top" title="Reach the top of the page">Back to top</a> </div> <footer> <div class="footer"> <figure class="logo"> <img class="logo" src="../../../../_/img/logo-d.svg" alt="Apache Camel Logo" aria-label="white silhouette of a camel in front of a sand dune"> </figure> <input id="footer-toggle-overview" type="checkbox" title="Show/Hide Overview section"> <dl> <dt><label for="footer-toggle-overview">Overview</label><label for="footer-toggle-overview">&#65291;</label></dt> <dd><a href="../../../../blog/">Blog</a></dd> <dd><a href="../../../../docs/">Documentation</a></dd> <dd><a href="../../../../community/support/">Community</a></dd> <dd><a href="../../../../blog/">Download</a></dd> </dl> <input id="footer-toggle-documentation" type="checkbox" title="Show/Hide Documentation section"> <dl> <dt><label for="footer-toggle-documentation">Documentation</label><label for="footer-toggle-documentation">&#65291;</label></dt> <dd><a href="../../../../manual/latest/">User Manual</a></dd> <dd><a href="../../../../components/latest/index.html">Components</a></dd> <dd><a href="../../../../camel-k/latest/">Camel-K</a></dd> <dd><a href="../../../../camel-kafka-connector/latest/">Camel Kafka Connector</a></dd> <dd><a href="../../../../camel-quarkus/latest/">Camel Quarkus</a></dd> <dd><a href="../../../../camel-spring-boot/latest/">Camel Spring Boot</a></dd> <dd><a href="../../../../camel-karaf/latest/">Camel Karaf</a></dd> <dd><a href="../../../../manual/latest/faq/index.html">FAQ</a></dd> </dl> <input id="footer-toggle-community" type="checkbox" title="Show/Hide Community section"> <dl> <dt><label for="footer-toggle-community">Community</label><label for="footer-toggle-community">&#65291;</label></dt> <dd><a href="../../../../community/support/">Support</a></dd> <dd><a href="../../../../manual/latest/contributing.html">Contributing</a></dd> <dd><a href="../../../../manual/latest/mailing-lists.html">Mailing Lists</a></dd> <dd><a href="../../../../community/user-stories/">User stories</a></dd> <dd><a href="../../../../community/articles/">Articles</a></dd> <dd><a href="../../../../community/books/">Books</a></dd> <dd><a href="../../../../community/team/">Team</a></dd> </dl> <input id="footer-toggle-about" type="checkbox" title="Show/Hide Acknowledgements section"> <dl> <dt><label for="footer-toggle-about">About</label><label for="footer-toggle-about">&#65291;</label></dt> <dd><a href="../../../../acknowledgments/">Acknowledgments</a> </dd><dd><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.apache.org/events/current-event.html" title="Apache Events">Apache Events</a></dd> <dd><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.apache.org/licenses/" title="License">License</a></dd> <dd><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.apache.org/security/" title="Security">Security</a></dd> <dd><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.apache.org/foundation/sponsorship.html" title="Sponsorship">Sponsorship</a></dd> <dd><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.apache.org/foundation/thanks.html" title="Thanks">Thanks</a></dd> </dl> <p class="remark"> &copy; 2004-2020 The <a href="https://apache.org">Apache Software Foundation</a>.<br> Apache Camel, Camel, Apache, the Apache feather logo, and the Apache Camel project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners. </p> <div class="resources"> <div class="context"> <a href="../../../../privacy-policy/">Privacy Policy</a> </div> <div class="context"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.apache.org/foundation/policies/conduct">Code of Conduct</a> </div> <div class="context"> <a href="../../../../sitemap/">Sitemap</a> </div> </div> <div class="footer-icons"> <a rel="noopener noreferrer nofollow" href="https://github.com/apache/camel/" title="Collaborate on GitHub"><svg class="brand-icon"><use href="../../../../_/img/brand-logos.svg#github"/></svg></a> <a rel="noopener noreferrer nofollow" href="https://camel.zulipchat.com" title="Chat on Zulip"><svg class="brand-icon"><use href="../../../../_/img/brand-logos.svg#zulip"/></svg></a> <a rel="noopener noreferrer nofollow" href="https://twitter.com/ApacheCamel" title="Follow Apache Camel on Twitter"><svg class="brand-icon"><use href="../../../../_/img/brand-logos.svg#twitter"/></svg></a> </div> </div> </footer> <script src="../../../../_/js/vendor/algoliasearch-7a1af112e6.js"></script> <script src="../../../../_/js/site-0d18f68ee9.js"></script> <script async src="../../../../_/js/vendor/highlight-a988c6fdd9.js"></script> <script async src="../../../../_/js/vendor/svg4everybody-195d47ce7d.js"></script> <script type="application/ld+json"> {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "Apache Camel",
+    "url": "https:\/\/camel.apache.org\/"
+    , "sameAs": ["https://twitter.com/ApacheCamel"]
+    , "logo": "https:\/\/camel.apache.org\/_\/img\/logo-d.svg"
+    , "description": "Apache Camel ™ is a versatile open-source integration framework based on known Enterprise Integration Patterns. Camel empowers you to define routing and mediation rules in a variety of domain-specific languages, including a Java-based Fluent API, Spring or Blueprint XML Configuration files, and a Scala DSL." 
+  } </script> <script type="application/ld+json"> {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position":  1 ,
+        "item": {
+          "@id": "https://camel.apache.org/",
+          "name": "Apache Camel"
+        }
+    },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "item": {
+          "@id": "https://camel.apache.org/blog/",
+          "name": "blog"
+        }
+    },{
+        "@type": "ListItem",
+        "position":  3 ,
+        "item": {
+          "@id": "https://camel.apache.org/blog/2020/",
+          "name": "2020"
+        }
+    },{
+        "@type": "ListItem",
+        "position":  4 ,
+        "item": {
+          "@id": "https://camel.apache.org/blog/2020/10/",
+          "name": "10"
+        }
+    },{
+        "@type": "ListItem",
+        "position":  5 ,
+        "item": {
+          "@id": "https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/",
+          "name": "camel-aws2-eventbridge-intro"
+        }
+    }]
+} </script> </body> </html> 

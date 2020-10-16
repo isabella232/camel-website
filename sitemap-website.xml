@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://camel.apache.org/categories/Camel/</loc>
+    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://camel.apache.org/categories/Camel-K/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
   </url>
@@ -19,6 +24,11 @@
   
   <url>
     <loc>https://camel.apache.org/</loc>
+    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
   </url>
   
