@@ -6,10 +6,21 @@
     <description>Recent content in Blog on Apache Camel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://camel.apache.org/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introducing Camel-AWS2-Eventbridge component</title>
+      <link>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</link>
+      <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</guid>
+      <description>In Camel 3.6.0 we will introduce the camel-aws2-eventbridge among others new cool components. The aim of this blog post is showing what you can do with the Eventbridge AWS Service and the related camel component.
+What is AWS Eventbridge? The definition from the AWS official website is the following:
+Amazon EventBridge is a serverless event bus that makes it easy to connect applications together using data from your own applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.</description>
+    </item>
     
     <item>
       <title>Camel K 1.2.0 Released</title>
@@ -21,17 +32,6 @@
 This version introduces some important features that will play an increasingly bigger role in future releases of Camel K.
 Quarkus as default runtime Camel K 1.2.0 uses camel-quarkus 1.1.0 (Quarkus 1.8.0.Final) as runtime, but Quarkus is no longer an optional runtime for Camel K: Quarkus is now the default runtime.
 This means that users no longer need to enable Quarkus explicitly when running their integrations (using kamel run -t quarkus.</description>
-    </item>
-    
-    <item>
-      <title>Introducing Camel-AWS2-Eventbridge component</title>
-      <link>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</link>
-      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</guid>
-      <description>In Camel 3.6.0 we will introduce the camel-aws2-eventbridge among others new cool components. The aim of this blog post is showing what you can do with the Eventbridge AWS Service and the related camel component.
-What is AWS Eventbridge? The definition from the AWS official website is the following:
-Amazon EventBridge is a serverless event bus that makes it easy to connect applications together using data from your own applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.</description>
     </item>
     
     <item>

@@ -4,12 +4,22 @@
   
   <url>
     <loc>https://camel.apache.org/blog/</loc>
-    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://camel.apache.org/categories/Camel/</loc>
-    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://camel.apache.org/</loc>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</loc>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -19,16 +29,6 @@
   
   <url>
     <loc>https://camel.apache.org/blog/2020/10/camel-k-release-1.2.0/</loc>
-    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://camel.apache.org/</loc>
-    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
   </url>
   

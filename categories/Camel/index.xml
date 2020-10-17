@@ -6,7 +6,7 @@
     <description>Recent content in Camel on Apache Camel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://camel.apache.org/categories/Camel/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Introducing Camel-AWS2-Eventbridge component</title>
       <link>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</link>
-      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://camel.apache.org/blog/2020/10/camel-aws2-eventbridge-intro/</guid>
       <description>In Camel 3.6.0 we will introduce the camel-aws2-eventbridge among others new cool components. The aim of this blog post is showing what you can do with the Eventbridge AWS Service and the related camel component.
