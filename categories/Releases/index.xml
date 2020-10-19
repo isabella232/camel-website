@@ -194,10 +194,10 @@ We have also continued the work to make Camel more modular and lighter.</descrip
     
     <item>
       <title>RELEASE 3.4.0</title>
-      <link>https://camel.apache.org/blog/release-3-4-0.html</link>
+      <link>https://camel.apache.org/blog/2020/06/RELEASE-3.4.0/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://camel.apache.org/blog/release-3-4-0.html</guid>
+      <guid>https://camel.apache.org/blog/2020/06/RELEASE-3.4.0/</guid>
       <description>The Camel community announces the immediate availability of Camel 3.4.0, a new LTS release with 118 new features, improvements and fixes.
 The artifacts are published and ready for you to download from the Central Maven repository. For more details please take a look at the release notes.
 Many thanks to all who made this release possible.
