@@ -68,6 +68,16 @@
   </url>
   
   <url>
+    <loc>https://camel.apache.org/blog/release-3-6-0.html</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://camel.apache.org/releases/release-3.6.0/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://camel.apache.org/blog/2020/09/Camel-kafka-connector-050-Whatsnew/</loc>
     <lastmod>2020-09-14T00:00:00+00:00</lastmod>
   </url>

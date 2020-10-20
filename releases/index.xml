@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Release 3.6.0</title>
+      <link>https://camel.apache.org/releases/release-3.6.0/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://camel.apache.org/releases/release-3.6.0/</guid>
+      <description>This release is the new Camel 3.6.0 patch release.</description>
+    </item>
+    
+    <item>
       <title>Release 3.5.0</title>
       <link>https://camel.apache.org/releases/release-3.5.0/</link>
       <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>

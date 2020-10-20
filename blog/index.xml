@@ -70,6 +70,19 @@ Gregor Zurowski</description>
     </item>
     
     <item>
+      <title>RELEASE 3.6.0</title>
+      <link>https://camel.apache.org/blog/release-3-6-0.html</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://camel.apache.org/blog/release-3-6-0.html</guid>
+      <description>The Camel community announces the immediate availability of Camel 3.6.0, a new minor release with 151 new features, improvements and fixes.
+The artifacts are published and ready for you to download from the Central Maven repository. For more details please take a look at the release notes.
+Many thanks to all who made this release possible.
+On behalf of the Camel PMC,
+Gregor Zurowski</description>
+    </item>
+    
+    <item>
       <title>Apache Camel Kafka Connector 0.5.0: What&#39;s New</title>
       <link>https://camel.apache.org/blog/2020/09/Camel-kafka-connector-050-Whatsnew/</link>
       <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
