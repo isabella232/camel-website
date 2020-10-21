@@ -6,10 +6,22 @@
     <description>Recent content in Blog on Apache Camel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Oct 2020 11:27:14 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://camel.apache.org/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Apache Camel 3.6 What&#39;s New</title>
+      <link>https://camel.apache.org/blog/2020/10/Camel36-Whatsnew/</link>
+      <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://camel.apache.org/blog/2020/10/Camel36-Whatsnew/</guid>
+      <description>Apache Camel 3.6 has just been released.
+This is a non-LTS release which means we will not provide patch releases but use the release as-is. The next planned LTS release is 3.7 scheduled towards the end of the year.
+So what&amp;rsquo;s in this release? This release introduces a set of new features and noticeable improvements that we will cover in this blog post.
+Spring Boot We have upgraded to the latest release at this time which is Spring Boot 2.</description>
+    </item>
     
     <item>
       <title>Recordings from ApacheCon @Home 2020</title>
