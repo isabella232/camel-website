@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://camel.apache.org/blog/2020/10/Camel36-Whatsnew/</loc>
-    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://camel.apache.org/blog/</loc>
-    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://camel.apache.org/</loc>
-    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://camel.apache.org/blog/2020/10/VSCode-LanguageSupport-0.0.28/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://camel.apache.org/categories/Releases/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://camel.apache.org/categories/Tooling/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://camel.apache.org/blog/2020/10/Camel36-Whatsnew/</loc>
     <lastmod>2020-10-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -104,11 +114,6 @@
   
   <url>
     <loc>https://camel.apache.org/blog/2020/09/Camel35-Whatsnew/</loc>
-    <lastmod>2020-09-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://camel.apache.org/categories/Tooling/</loc>
     <lastmod>2020-09-07T00:00:00+00:00</lastmod>
   </url>
   

@@ -6,10 +6,21 @@
     <description>Recent content in Home on Apache Camel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://camel.apache.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>New release of VS Code Language Support for Apache Camel 0.0.28</title>
+      <link>https://camel.apache.org/blog/2020/10/VSCode-LanguageSupport-0.0.28/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://camel.apache.org/blog/2020/10/VSCode-LanguageSupport-0.0.28/</guid>
+      <description>A new release of VS Code Language Support for Apache Camel 0.0.28 is available. It includes an interesting set of new features.
+Camel 3.6.0 upgrade Camel 3.6.0 catalog is now provided by default. The 3.6.0 version is also leveraged internally.
+Camel Kafka Connector Properties file improvements Previously, the support for Camel Kafka Connector was limited to Camel URI in camel.(sink|source).url property value. This release adds support for the list of properties provided for each parameter instead of using a potentially long Camel URI.</description>
+    </item>
     
     <item>
       <title>Apache Camel 3.6 What&#39;s New</title>
