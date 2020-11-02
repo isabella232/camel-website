@@ -6,10 +6,20 @@
     <description>Recent content in Camel Quarkus on Apache Camel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2020 17:02:10 +0200</lastBuildDate>
     
 	<atom:link href="https://camel.apache.org/categories/Camel-Quarkus/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Camel: mocking more than ever helped by Quarkus friend</title>
+      <link>https://camel.apache.org/blog/2020/10/mocking-beans-with-camel-quarkus/</link>
+      <pubDate>Sat, 31 Oct 2020 17:02:10 +0200</pubDate>
+      
+      <guid>https://camel.apache.org/blog/2020/10/mocking-beans-with-camel-quarkus/</guid>
+      <description>Even implementing a simple stateless micro-service, one could face situations where testing becomes hard. A lot of tools and techniques could help, but having something at hand quickly is very handy. In this post, I&amp;rsquo;m introducing a Quarkus feature that plays nice with Camel in order to mock beans for test purpose.
+Camel and Quarkus together for mocking beans It&amp;rsquo;s long known that Camel offers great support for Java beans.</description>
+    </item>
     
     <item>
       <title>Camel Quarkus 1.2.0 and 1.3.0 Released</title>
