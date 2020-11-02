@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Apache Camel</title>
@@ -1524,10 +1524,10 @@ Please assume that everything you contribute intentionally to The ASF, or any pr
       <guid>https://camel.apache.org/community/sources/</guid>
       <description>## Web Browsing of git
 To browse via the web:
-https://gitbox.apache.org/repos/asf/camel.git  ## Web Browing Using FishEye
+https://gitbox.apache.org/repos/asf/camel.git ## Web Browing Using FishEye
 A hearty thanks to Atlassian for providing FishEye hosting for Camel. Below is the URL to browse the Subversion repo via FishEye:
-https://fisheye6.atlassian.com/browse/camel-git  ## Checking out from git
-git clone https://gitbox.apache.org/repos/asf/camel.git  Only project developers can commit to the git via this method. SSH must be installed on your client machine. Enter your site password when prompted.</description>
+https://fisheye6.atlassian.com/browse/camel-git ## Checking out from git
+git clone https://gitbox.apache.org/repos/asf/camel.git Only project developers can commit to the git via this method. SSH must be installed on your client machine. Enter your site password when prompted.</description>
     </item>
     
     <item>
@@ -1537,8 +1537,8 @@ git clone https://gitbox.apache.org/repos/asf/camel.git  Only project developers
       
       <guid>https://camel.apache.org/docs/sources/</guid>
       <description>Web Browsing of git To browse via the web:
-https://git-wip-us.apache.org/repos/asf?p=camel.git  Web Browsing Using FishEye A hearty thanks to Atlassian for providing FishEye hosting for Camel. Below is the URL to browse the Subversion repo via FishEye:
-https://fisheye6.atlassian.com/browse/camel-git  Checking out from git git clone https://git-wip-us.apache.org/repos/asf/camel.git  Only project developers can commit to the git via this method. SSH must be installed on your client machine. Enter your site password when prompted.</description>
+https://git-wip-us.apache.org/repos/asf?p=camel.git Web Browsing Using FishEye A hearty thanks to Atlassian for providing FishEye hosting for Camel. Below is the URL to browse the Subversion repo via FishEye:
+https://fisheye6.atlassian.com/browse/camel-git Checking out from git git clone https://git-wip-us.apache.org/repos/asf/camel.git Only project developers can commit to the git via this method. SSH must be installed on your client machine. Enter your site password when prompted.</description>
     </item>
     
     <item>
