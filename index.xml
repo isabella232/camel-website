@@ -1547,7 +1547,7 @@ https://fisheye6.atlassian.com/browse/camel-git  Checking out from git git clone
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://camel.apache.org/community/support/</guid>
-      <description>Getting help If you are experiencing problems using Camel then please report your problem to our mailing list. This allows the entire community to help with your problem. If indeed a bug has been identified in the Camel software, then document the problem in our Issue Tracker. Please refrain from immediately opening a ticket in the issue tracker unless you are certain it&amp;rsquo;s a problem in the Camel software.</description>
+      <description>Getting help If you are experiencing problems using Camel then please report your problem to our mailing list or Zulip chat. This allows the entire community to help with your problem. If indeed a bug has been identified in the Camel software, then document the problem in our Issue Tracker. Please refrain from immediately opening a ticket in the issue tracker unless you are certain it&amp;rsquo;s a problem in the Camel software.</description>
     </item>
     
     <item>
